@@ -1,19 +1,25 @@
+
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask with JS Imports</title>
+    <title>The Agent Game</title>
 </head>
+
 <body>
-    <h1>Flask with JavaScript Imports</h1>
-    <div id="dev"></div>
+    <div class="container" style="display: flex; justify-content: center; align-items: center;">
+        <div id="dev" style="width: 90vw; height:90vh; border: 1px solid black;"></div>
+    </div>
     <script type="module">
-        import ButtonList from '/static/scripts/ButtonList.js';
+        import Game_Interface from '/static/scripts/Game_Interface.js';
 
         const container = document.getElementById("dev");
-        const buttonList = new ButtonList(container, "button 1", "button 2");
-        buttonList.render()
+        const game_interface = new Game_Interface(container);
+        game_interface.render()
     </script>
 </body>
+
 </html>
