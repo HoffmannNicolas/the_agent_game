@@ -1,17 +1,16 @@
 
-import PerlinNoise from './Perlin_Noise.js';
+import PerlinNoise from './PerlinNoise.js';
 
 
 export default class Map {
 
-    constructor(container) {
-        this.container = container;
-        this.array_width = 100;
-        this.array_height = 100;
-        // this.array = this.generateRandomArray(
+    constructor(map_width, map_height) {
+        this.map_width = map_width;
+        this.map_height = map_height;
+
         this.array = this.generate_perlin_noise(
-                this.array_width,
-            this.array_height
+            this.map_width,
+            this.map_height
         );
     }
 
@@ -43,26 +42,5 @@ export default class Map {
         return array;
     }
 
-    render() {
-        const table = document.createElement('table');
-        table.style.borderCollapse = 'collapse';
-        table.style.width = '100%';
-        table.style.height = '100%';
-
-        this.array.forEach(row => {
-            const tr = document.createElement('tr');
-            row.forEach(value => {
-                const td = document.createElement('td');
-                const greyValue = Math.max(0, Math.min(255, value)); // Clamp value between 0 and 255
-                td.style.backgroundColor = `rgb(${greyValue}, ${greyValue}, ${greyValue})`;
-                td.style.width = `{100/this.array_width}%`; // '20px';
-                td.style.height = `{100/this.array_height}%`; // '20px';
-                tr.appendChild(td);
-            });
-            table.appendChild(tr);
-        });
-
-        this.container.appendChild(table);
-    }
 }
 
