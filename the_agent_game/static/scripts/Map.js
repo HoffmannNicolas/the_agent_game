@@ -14,7 +14,7 @@ export default class Map {
         );
     }
 
-    generateRandomArray(width, height) {
+    generate_random_array(width, height) {
         const array = [];
         for (let i = 0; i < height; i++) {
             const row = [];

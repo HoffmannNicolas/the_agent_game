@@ -1,7 +1,4 @@
 
-import Map from './Map.js';
-
-
 export default class MapDisplay {
 
     constructor(container, map, initial_n_cells_displayed, initial_center_cell) {
@@ -56,32 +53,32 @@ export default class MapDisplay {
     }
 
     move_up() {
-        this.center_cell[1] -= Math.floor(this.n_cells_displayed / 15);
+        this.center_cell[1] -= Math.ceil(this.n_cells_displayed / 15);
         this.container.innerHTML = '';
         this.render();
     }
 
     move_down() {
-        this.center_cell[1] += Math.floor(this.n_cells_displayed / 15);
+        this.center_cell[1] += Math.ceil(this.n_cells_displayed / 15);
         this.container.innerHTML = '';
         this.render();
     }
 
     move_left() {
-        this.center_cell[0] -= Math.floor(this.n_cells_displayed / 15);
+        this.center_cell[0] -= Math.ceil(this.n_cells_displayed / 15);
         this.container.innerHTML = '';
         this.render();
     }
 
     move_right() {
-        this.center_cell[0] += Math.floor(this.n_cells_displayed / 15);
+        this.center_cell[0] += Math.ceil(this.n_cells_displayed / 15);
         this.container.innerHTML = '';
         this.render();
     }
 
 
     zoom_in() {
-        this.n_cells_displayed = Math.max(10, Math.floor(this.n_cells_displayed*0.9));
+        this.n_cells_displayed = Math.max(10, Math.ceil(this.n_cells_displayed*0.9));
         this.container.innerHTML = '';
         this.render();
     }
