@@ -1,5 +1,5 @@
 
-import Map from './Map.js';
+import Game from './Game.js';
 import MapDisplay from './MapDisplay.js';
 
 export default class GameInterface {
@@ -7,9 +7,9 @@ export default class GameInterface {
     constructor(container) {
         this.container = container;
 
-        this.map_width_cell = 100;
-        this.map_height_cell = 100;
-        this.map = new Map(this.map_width_cell, this.map_height_cell);
+        this.map_width_cell = 10;
+        this.map_height_cell = 10;
+        this.game = new Game(this.map_width_cell, this.map_height_cell);
 
         const map_size_pixels = Math.min(container.offsetWidth, container.offsetHeight);
         const map_container = document.createElement('div');
@@ -20,8 +20,8 @@ export default class GameInterface {
 
         let initial_n_cell_displayed = Math.floor((this.map_width_cell + this.map_height_cell) / 3);
         let initial_center_cell = [Math.floor(this.map_width_cell / 2), Math.floor(this.map_height_cell / 2)];
-        this.map_display = new MapDisplay(map_container, this.map, initial_n_cell_displayed, initial_center_cell);
-    
+        this.map_display = new MapDisplay(map_container, this.game.map, initial_n_cell_displayed, initial_center_cell, this.game.agents);
+
         document.addEventListener('DOMContentLoaded', () => {
             const keyCallbacks = {
                 'ArrowUp': () => this.map_display.move_up(),
@@ -52,8 +52,6 @@ export default class GameInterface {
 
 
     render() {
-
         this.map_display.render();
-
     }
 }
